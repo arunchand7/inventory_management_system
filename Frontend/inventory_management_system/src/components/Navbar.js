@@ -19,6 +19,9 @@ export default function Navbar(props) {
               <li className="nav-item">
                 <a className="nav-link active text-white fs-4" aria-current="page" href="/about">About</a>
               </li>
+              <li className="nav-item">
+                <a className="nav-link active text-white fs-4" aria-current="page" href="/login">Login</a>
+              </li>
             </ul>
             <form className="d-flex" role="search">
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />

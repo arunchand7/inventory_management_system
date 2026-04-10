@@ -13,6 +13,10 @@ const ProductSchema = new mongoose.Schema(
             type: Number,
             required: true,
         },
+        ProductQuantity: {
+            type: Number,
+            required: true,
+        },
     });
 
 const Products = mongoose.model("Products", ProductSchema)

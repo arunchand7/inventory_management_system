@@ -9,6 +9,8 @@ export default function Products() {
 
     const [productData, setProductData] = useState([]);
 
+    const role = localStorage.getItem("role");
+
     const getProducts = async (e) => {
 
         try {
@@ -60,9 +62,11 @@ export default function Products() {
 
             <div className='container-fluid p-5'>
                 <h1>Products Inventory</h1>
-                <div className='add_button'>
-                    <NavLink to="/insertproduct" className='btn btn-primary fs-5'> + Add New Product</NavLink>
-                </div>
+                {role === "admin" && (
+                    <div className='add_button'>
+                        <NavLink to="/insertproduct" className='btn btn-primary fs-5'> + Add New Product</NavLink>
+                    </div>
+                )}
                 <div className="overflow-auto mt-3" style={{ maxHeight: "38rem" }}>
                     <table className="table table-striped table-hover mt-3 fs-5">
                         <thead>
@@ -72,7 +76,10 @@ export default function Products() {
                                 <th scope="col">Product Price</th>
                                 <th scope="col">Product Barcode</th>
                                 <th scope="col">Update</th>
-                                <th scope="col">Delete</th>
+
+                                {role === "admin" && (
+                                    <th scope="col">Delete</th>
+                                )}
                             </tr>
                         </thead>
                         <tbody>
@@ -88,7 +95,9 @@ export default function Products() {
                                                 <td>{element.ProductBarcode}</td>
 
                                                 <td><NavLink to={`/updateproduct/${element._id}`} className="btn btn-primary"><i className="fa-solid fa-pen-to-square"></i></NavLink></td>
-                                                <td><button className="btn btn-danger" onClick={() => deleteProduct(element._id)}><i class="fa-solid fa-trash"></i></button></td>
+                                                {role === "admin" && (
+                                                    <td><button className="btn btn-danger" onClick={() => deleteProduct(element._id)}><i class="fa-solid fa-trash"></i></button></td>
+                                                )}
 
                                             </tr>
                                         </>
