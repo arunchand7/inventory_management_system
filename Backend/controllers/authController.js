@@ -2,14 +2,24 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../Models/User');
 
-const JWT_SECRET = process.env.JWT_SECRET || 'change_this_secret';
+const JWT_SECRET = process.env.JWT_SECRET || '';
 
 const sanitize = (input) => input.replace(/<[^>]*>?/gm, "");
+
+const isPasswordStrong = (password) => {
+  const rules = [
+    /.{8,}/,
+    /[A-Z]/,
+    /[a-z]/,
+    /[0-9]/,
+    /[@$!%*?&]/,
+  ];
+  return rules.every((pattern) => pattern.test(password));
+};
 
 const registerUser = async (req, res) => {
   let { name, email, password } = req.body;
 
-  // Sanitize inputs
   req.body.name = sanitize(req.body.name);
   name = req.body.name.trim();
   email = email.trim().toLowerCase();
@@ -21,6 +31,12 @@ const registerUser = async (req, res) => {
 
   if (typeof name !== 'string' || typeof email !== 'string' || typeof password !== 'string') {
     return res.status(400).json({ message: 'Invalid input types.' });
+  }
+
+  if (!isPasswordStrong(password)) {
+    return res.status(400).json({
+      message: 'Password must be at least 8 characters long and include uppercase, lowercase, number, and special character.'
+    });
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -52,7 +68,6 @@ const registerUser = async (req, res) => {
 const loginUser = async (req, res) => {
   let { email, password } = req.body;
 
-  // Sanitize inputs
   email = email.trim().toLowerCase();
   password = password.trim();
 

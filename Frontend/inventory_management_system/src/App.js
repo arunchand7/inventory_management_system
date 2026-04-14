@@ -19,9 +19,9 @@ import {
 function App() {
   return (
     <div className="App">
-      <Navbar title="IMS" about="About"></Navbar>
-
       <Router>
+        <Navbar title="IMS" about="About" />
+
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
