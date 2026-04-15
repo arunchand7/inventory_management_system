@@ -1,42 +1,189 @@
-# Inventory Management System MERN CRUD App
+# 🔐 Secure Inventory Management System (MERN Stack)
 
-A simple MERN project that lets the user insert, update, delete & get products from the MongoDB.
+## 📌 Overview
 
-## To Run App:
+It is a secure Inventory Management System and is developed with the MERN stack (MongoDB, Express, React, Node.js). This was initially a simple CRUD application that has been refined and augmented with several security measures to guard against typical web threats.
 
-### 1. Open the folder in vs code and run (npm install) command.
-   
-### 2. In MongoDB Compass:
-   - Create Database: IMS
-   - Collection Name: products
+The project shows how security can be incorporated into a web application based on industry best practices.
 
-### 3. Then in vs code, open two terminals in split:
-   ![image](https://github.com/mhy20401/Inventory-Management-System-MERN-CRUD-Project/assets/99351091/86ed0828-84b8-43b0-89fd-8caa17b88833)
+---
 
-### 4. In one terminal run these commands (For Backend / Server):
-   - cd Backend
-   - npm run server
+## 🚀 Features
 
-### 5. In the other terminal run these commands (For Frontend / Client):
-   - cd Frontend
-   - cd inventory_management_system
-   - npm start
-   ![image](https://github.com/mhy20401/Inventory-Management-System-MERN-CRUD-Project/assets/99351091/93fa528b-bc88-49c2-9922-19b317336b7c)
+### 🔑 Core Features
 
-## Output:
-### 1. GET (Displaying products)
-   ![image](https://github.com/mhy20401/Inventory-Management-System-MERN-CRUD-Project/assets/99351091/09f7d43a-344b-4122-b415-b3736307cf45)
+* User Registration & Login
+* Product Management (CRUD)
+Role-Based Access Control (Admin/User)
 
-### 2. POST (Inserting a new product)
-   ![image](https://github.com/mhy20401/Inventory-Management-System-MERN-CRUD-Project/assets/99351091/d31e9f36-c119-4a04-9cc0-ddc9fe94b159)
-   ![image](https://github.com/mhy20401/Inventory-Management-System-MERN-CRUD-Project/assets/99351091/39ec387f-5efc-4c1f-a7eb-a87612acc17a)
-   ![image](https://github.com/mhy20401/Inventory-Management-System-MERN-CRUD-Project/assets/99351091/a6b5c6bf-77d7-41ab-9ca0-3a8bfc71954d)
-   ![image](https://github.com/mhy20401/Inventory-Management-System-MERN-CRUD-Project/assets/99351091/3d43e877-c2e6-414b-bef9-410caae1668e)
+---
 
-### 3. PUT (Updating a product)
-   ![image](https://github.com/mhy20401/Inventory-Management-System-MERN-CRUD-Project/assets/99351091/d35f7ab0-3fda-4b1c-9055-67ca8c7b2ab6)
-   ![image](https://github.com/mhy20401/Inventory-Management-System-MERN-CRUD-Project/assets/99351091/7dd107db-6fde-416d-b5c6-2175916f872f)
+### 🔐 Security Features
 
-### 4. DELETE (Deleting a product)
-   ![image](https://github.com/mhy20401/Inventory-Management-System-MERN-CRUD-Project/assets/99351091/d846ff43-6abd-4baa-9ed6-df736f2d411e)
-   ![image](https://github.com/mhy20401/Inventory-Management-System-MERN-CRUD-Project/assets/99351091/cc6368bd-f391-4d6b-b814-c931d48a0878)
+* JWT-based Authentication
+* Role-Based Authorization (RBAC)
+* Input Validation & Sanitization
+* NoSQL Injection Prevention
+The application will be equipped with Cross-site Scripting (XSS) Protection.
+The CSRF protection (through CORS and token authentication) is also mitigated.
+* Directory Traversal Protection
+* Rate Limiting (Brute-force protection)
+* Secure HTTP Headers (Helmet)
+secret Environment Variables: These are the environment variables used by secrets.
+
+---
+
+## 🧱 Tech Stack
+
+**Frontend**
+
+* React.js
+
+**Backend**
+
+* Node.js
+* Express.js
+
+**Database**
+
+* MongoDB
+
+**Security**
+
+* Javascript Object Notation (JSON) Web Tokens (JWT)
+* Helmet
+* Express Validator
+* Express Rate Limit
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone [your-repo-link]
+cd [repo-folder]
+```
+
+---
+
+### 2️⃣ Setup Backend
+
+```bash
+cd backend
+npm install
+```
+
+Create `.env` file:
+
+```env
+JWT_SECRET=your_secret_key
+```
+
+Run backend:
+
+```bash
+npm start
+```
+
+---
+
+### 3️⃣ Setup Frontend
+
+```bash
+cd frontend
+npm install
+npm start
+```
+
+---
+
+|human|>## 🔐 Security Enhancements (Pre vs Post)
+
+| Vulnerability       | Before            | After              |
+| ------------------- | ----------------- | ------------------ |
+|human|>|human|>|human|>|Not implemented | ✅ JWT-based auth.uth   |
+| Authorization| ❌ No restrictions | ✅ RBAC implemented |nted |
+|human|>|human|>|NoSQL Injection| ❌ Vulnerable ✅ Validated inputs|human|>|human|>|human|>|human|>||human|>||human|>||human|>||human|>||| inputs |
+| XSS                 | ❌ Vulnerable      | ✅ Sanitized inputs |
+| CSRF                | ⚠️ Possible       | ✅ Mitigated        |
+|human|>|human|>|human|>|human|>|prevented|nted        |
+| Rate Limiting | ❌ Not present | ✅ Implemented |lemented      |
+
+---
+
+## 🧪 Testing
+
+The following were used to test the application:
+
+* Postman (API testing)
+* Browser DevTools
+* Manual security testing
+
+### ✔️ Security Tests Performed
+
+* NoSQL Injection attacks
+* XSS payload testing
+* Unauthorized access attempts
+* Role-based access testing
+* Rate limiting validation
+* directory traversal testing and CSRF.
+
+---
+
+## 📸 Screenshots
+
+* Login Page
+  <img width="1460" height="714" alt="image" src="https://github.com/user-attachments/assets/98fb4d23-e017-4e61-ac44-800d169ef746" />
+* Admin Dashboard
+  <img width="1470" height="716" alt="image" src="https://github.com/user-attachments/assets/d2aecd01-b037-4ecf-aaed-55420f9f9ae9" />
+* Denies user role access.<|human|>* Access Denied (User Role)
+  <img width="1469" height="642" alt="image" src="https://github.com/user-attachments/assets/86071d38-6e2e-4680-95f4-e2a664b7a9d2" />
+* Injection Attack Blocked
+  <img width="1465" height="792" alt="image" src="https://github.com/user-attachments/assets/09ca5608-7476-4d7c-823c-bf733bf54aff" />
+* Rate Limiting Response
+  <img width="1121" height="812" alt="image" src="https://github.com/user-attachments/assets/24298672-20ce-4bdd-b2de-21e3fd16db64" />
+
+
+---
+
+## 📊 Project Structure
+
+```bash
+root/
+│
+├── backend/
+│   ├── routes/
+│   ├── models/
+│   ├── middleware/
+│   └── app.js
+│
+├── frontend/
+│   ├── src/
+│   └── components/
+│
+└── README.md
+```
+
+---
+
+## 🔮 Future Improvements
+
+* HTTPS deployment
+* Refresh token implementation
+* Advanced logging & monitoring
+* Docker deployment
+
+---
+
+## 👨‍💻 Author
+
+**ARUN CHAND**
+Student ID: 25126105
+
+---
+
+## 📄 License
+
+This project is for academic purposes.
