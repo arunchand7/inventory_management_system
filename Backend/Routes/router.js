@@ -114,7 +114,7 @@ router.get('/products/:id', async (req, res) => {
     }
 })
 
-router.put('/updateproduct/:id', [
+router.put('/updateproduct/:id', [authMiddleware, authorizeRoles('admin'),
     body('ProductName')
         .isString().withMessage('Name must be a string')
         .matches(/^[a-zA-Z0-9 ]+$/).withMessage('Invalid characters in product name')
@@ -149,7 +149,7 @@ router.put('/updateproduct/:id', [
     }
 })
 
-router.delete('/deleteproduct/:id', async (req, res) => {
+router.delete('/deleteproduct/:id', authMiddleware, authorizeRoles('admin'), async (req, res) => {
 
     try {
         const deleteProduct = await products.findByIdAndDelete(req.params.id);

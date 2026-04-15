@@ -55,6 +55,12 @@ export default function InsertProduct() {
     const updateProduct = async (e) => {
         e.preventDefault();
 
+        const role = localStorage.getItem("role");
+        if (role !== "admin") {
+            setError("Access Denied: Only admins can update products.");
+            return;
+        }
+
         if (!productName || !productPrice || !productBarcode) {
             setError("*Please fill in all the required fields.");
             return;

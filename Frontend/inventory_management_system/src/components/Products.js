@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 export default function Products() {
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         getProducts();
@@ -56,6 +58,14 @@ export default function Products() {
 
     }
 
+    const handleUpdateClick = (id) => {
+        if (role === "admin") {
+            navigate(`/updateproduct/${id}`);
+        } else {
+            alert("Access Denied: Only admins can update products.");
+        }
+    }
+
     return (
         <>
 
@@ -94,7 +104,7 @@ export default function Products() {
                                                 <td>{element.ProductPrice}</td>
                                                 <td>{element.ProductBarcode}</td>
 
-                                                <td><NavLink to={`/updateproduct/${element._id}`} className="btn btn-primary"><i className="fa-solid fa-pen-to-square"></i></NavLink></td>
+                                                <td><button className="btn btn-primary" onClick={() => handleUpdateClick(element._id)}><i className="fa-solid fa-pen-to-square"></i></button></td>
                                                 {role === "admin" && (
                                                     <td><button className="btn btn-danger" onClick={() => deleteProduct(element._id)}><i class="fa-solid fa-trash"></i></button></td>
                                                 )}
